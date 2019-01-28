@@ -1,0 +1,21 @@
+<p>
+  Witamy na kurise {{title | uppercase}} <br>
+  liczba pi to {{pi | number: '1.1-2'}} <br>
+  dzis jest {{data | date: 'dd-MM-yy'}} <br>
+  Moj pies to {{dog1.name}} <br>
+  ma {{dog1.age}} lata <br>
+  {{showDog(dog1) | uppercase}}
+</p>
+ 
+<p>Days</p>
+<ul>
+  <li *ngFor="let day of days">
+      {{day}}
+  </li>
+</ul>
+<p>Dogs</p>
+<ul>
+  <li *ngFor ="let dog of dogs">
+    {{showDog(dog)}}
+  </li>
+</ul>
