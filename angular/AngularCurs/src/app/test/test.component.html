@@ -84,6 +84,14 @@
     <div *ngSwitchDefault>ND</div>
   </div>
 </div>
+<div [hidden]="soldierFlag">
+  <h1>Soldier</h1>
+  <div *ngFor="let item of soldier1.stat">
+    <p>{{item}}</p>
+  </div>
+</div>
+<h3 (click)="soldierToggle()">Pokaż Soldiera</h3>
+<h3 (click)="doDmgOnSoldier(soldier1, 5)">attack</h3>
 <h1>modyfukacja drzewa dom</h1>
 <div [hidden]="testobject.key4">Jestem Znikajacy</div>
 <div (click) ="showHide()">Pokaz coś magicznego</div>

@@ -12,6 +12,9 @@ export class DataBindingComponent implements OnInit {
   butttonDisable = true;
   showClick = '';
   inputlast = '';
+
+  firstInput = 'test1';
+  secondInput = 'test2';
   constructor() { }
 
   ngOnInit() {
@@ -20,11 +23,22 @@ export class DataBindingComponent implements OnInit {
     this.showClick = 'Przycisk aktywny';
     this.butttonDisable = false;
   }
+  mouseMoveHandler(event) {
+    console.log(`x: ${event.clientX} y: ${event.clientY}`);
+  }
   focusout() {
     this.showClick = 'Przycisk nie aktywny';
     this.butttonDisable = true;
   }
   onClickTwo(event) {
     console.log(event, ' evnet');
+  }
+
+
+  saveFirst(event) {
+    this.firstInput = event.target.value;
+  }
+  saveSec(event) {
+    this.secondInput = event.target.value;
   }
 }

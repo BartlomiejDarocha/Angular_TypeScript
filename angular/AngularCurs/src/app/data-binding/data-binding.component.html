@@ -7,12 +7,11 @@
   <input [(ngModel)]="inPutText2Way">
     {{inPutText2Way}}
   </div>
-
   <div>
-    <input (focus)="focus(event)"  (value)="inputlast">
-    <button [disabled]="butttonDisable" (click)="addValue()" >dodaj</button>
+    <input (focus)="focus()"  (value)="inputlast">
+    <button [disabled]="butttonDisable">dodaj</button>
     <br>
-    {{showClick}} 
+    {{showClick}}
     <!-- <p [src]="cos"></p>
     <p [className]="color"></p>
     <p [maxLength]="10" [value]="dupa"></p> -->
@@ -21,3 +20,12 @@
   <div>
     <button (click)="onClickTwo($event)">EvnetONclick</button>
   </div>
+  <h1 (mousemove)="mouseMoveHandler($event)">LogmouserOver</h1>
+
+  <h1>Lekcja 32 Data binding</h1>
+  <p>pierwszy input to {{firstInput}} drugi input to {{secondInput}}</p>
+
+  <label for="male">First</label>
+  <input [value]="firstInput" (input)="saveFirst($event)">
+  <label for="male">Second</label>
+  <input [value]="secondInput" (input)="saveSec($event)">
