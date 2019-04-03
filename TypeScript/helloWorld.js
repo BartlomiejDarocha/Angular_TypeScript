@@ -68,3 +68,10 @@ var Urname = /** @class */ (function () {
 }());
 var myName = new Urname("tomke");
 myName.funcPrint();
+
+var testfuc = function() {
+    console.log('test Wroks');
+}
+module.exports.someFunction = function () {
+    console.log('hi');
+  };

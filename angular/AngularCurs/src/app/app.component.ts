@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Inny tytul';
+  maintasks = ['mainTask', 'mycie', 'gotwanie', 'naprawa auta', 'nauka angulara'];
+  secetedTask(task: string): void {
+    console.log(task, '-task z outPuta');
+  }
+
 }

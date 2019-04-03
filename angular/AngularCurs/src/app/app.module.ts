@@ -7,12 +7,14 @@ import { TestComponent } from './test/test.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ChildComponent } from './child/child.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
     DataBindingComponent,
+    ChildComponent,
   ],
   imports: [
     BrowserModule,
