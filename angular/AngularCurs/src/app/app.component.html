@@ -2,5 +2,5 @@
 <!-- <app-test></app-test> -->
 <!-- <app-data-binding></app-data-binding> -->
 <!-- INPUT I OUTPUT -->
-<app-child [tasks]="maintasks" (eventTask)="secetedTask($event)"></app-child>
+<app-child [tasks]="maintasks" (etask)="selectedTasks($event)" (num2)="num2Printer($event)"></app-child>
 <router-outlet></router-outlet>

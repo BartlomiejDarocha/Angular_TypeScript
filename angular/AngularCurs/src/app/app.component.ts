@@ -8,8 +8,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Inny tytul';
   maintasks = ['mainTask', 'mycie', 'gotwanie', 'naprawa auta', 'nauka angulara'];
-  secetedTask(task: string): void {
-    console.log(task, '-task z outPuta');
-  }
+  maintaksDone = [];
 
+  selectedTasks(taskFromChild: string): void {
+    this.maintaksDone.push(taskFromChild);
+    console.log(this.maintaksDone);
+  }
+  num2Printer(numToLog: number): void {
+    console.log(numToLog, 'numt to log');
+  }
 }
