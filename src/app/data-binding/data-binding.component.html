@@ -1,0 +1,23 @@
+<h1>data-binding works!</h1>
+  <div>
+    <input [value]="inPutText">
+  </div>
+
+  <div>
+  <input [(ngModel)]="inPutText2Way">
+    {{inPutText2Way}}
+  </div>
+
+  <div>
+    <input (focus)="focus(event)"  (value)="inputlast">
+    <button [disabled]="butttonDisable" (click)="addValue()" >dodaj</button>
+    <br>
+    {{showClick}} 
+    <!-- <p [src]="cos"></p>
+    <p [className]="color"></p>
+    <p [maxLength]="10" [value]="dupa"></p> -->
+  </div>
+  <br>
+  <div>
+    <button (click)="onClickTwo($event)">EvnetONclick</button>
+  </div>

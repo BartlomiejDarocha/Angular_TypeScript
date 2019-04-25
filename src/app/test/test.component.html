@@ -2,20 +2,88 @@
   Witamy na kurise {{title | uppercase}} <br>
   liczba pi to {{pi | number: '1.1-2'}} <br>
   dzis jest {{data | date: 'dd-MM-yy'}} <br>
+  <!-- to sa pipe to wyżej oczywisce
+   -->
   Moj pies to {{dog1.name}} <br>
   ma {{dog1.age}} lata <br>
   {{showDog(dog1) | uppercase}}
 </p>
- 
+
 <p>Days</p>
 <ul>
   <li *ngFor="let day of days">
-      {{day}}
+    {{day}}
   </li>
 </ul>
+<p>{{dog5?.name}}</p>
 <p>Dogs</p>
 <ul>
-  <li *ngFor ="let dog of dogs">
+  <li *ngFor="let dog of dogs">
     {{showDog(dog)}}
   </li>
+  <li *ngFor="let dog of dogs; let i=index">
+    {{i+ 1}}{{dog.name}}
+  </li>
 </ul>
+<h2>Dog2 wiecej niz 2 lata</h2>
+<ul>
+  <ng-container *ngFor="let dog2 of dogs2; let i=index">
+    <li *ngIf="dog2.age >= 2">
+      {{i}} {{dog2.name}} ma {{dog2.age}} lat!
+    </li>
+  </ng-container>
+</ul>
+
+<p>NGFOR I NGCONTAINER</p>
+<ul>
+  <p *ngFor="let day of days; let e = even">
+    <li *ngIf="e">
+      {{day}}
+    </li>
+  </p>
+</ul>
+<ul>
+  <li *ngFor="let dog of dogs">
+    <ng-container>{{dog.name}} ma {{dog.age}} lat </ng-container>
+  </li>
+</ul>
+<p>
+  {{testobject.key1}} oraz {{testobject.key2}}
+</p>
+<h1 (click)="testobject.key3(testobject.key2)">Click ME</h1>
+<button (click)="addDogs()">dodaj pieski</button>
+<button (click)="removeDogs()">usuń psy</button>
+
+<!-- to jest serio fajna sprawa -->
+<div *ngIf="dogs.length > 0; then areDogs; else noDogs"></div>
+
+<!-- sterowanie z pozycji HTMl -->
+
+<ng-template #areDogs>
+  <div *ngFor="let dog of dogs; let i= index">
+    <p *ngIf="dog.age <= 2">
+        {{i+1}} {{showDog(dog)}}
+    </p>
+  </div>
+</ng-template>
+
+<ng-template #noDogs>
+  <br>
+  Nie ma pieskow
+</ng-template>
+
+<h1>NGSwitch</h1>
+<div *ngFor="let day of days; let i=index">
+  <div [ngSwitch]='day'>{{i+1}}
+    <div *ngSwitchCase="'poniedzialek'">pon</div>
+    <div *ngSwitchCase="'wtorek'">wtor</div>
+    <div *ngSwitchCase="'sroda'">srod</div>
+    <div *ngSwitchCase="'czwartek'">czw</div>
+    <div *ngSwitchCase="'piatek'">pia</div>
+    <div *ngSwitchCase="'sobota'">sob</div>
+    <div *ngSwitchDefault>ND</div>
+  </div>
+</div>
+<h1>modyfukacja drzewa dom</h1>
+<div [hidden]="testobject.key4">Jestem Znikajacy</div>
+<div (click) ="showHide()">Pokaz coś magicznego</div>
