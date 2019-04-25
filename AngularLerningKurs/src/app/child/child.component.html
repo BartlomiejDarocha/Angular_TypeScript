@@ -1,0 +1,9 @@
+<h1>ng child comopnnet</h1>
+<ul>
+  <li *ngFor="let task of tasks">
+    <p [innerText]="task"></p>
+    <button (click)="select2(task)">zaznacz 2</button>
+  </li>
+</ul>
+<h1 (click)="num2Handler()">Numer 2</h1>
+<ng-content></ng-content>

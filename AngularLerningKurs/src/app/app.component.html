@@ -1,0 +1,16 @@
+
+<!-- <app-test></app-test> -->
+<!-- <app-data-binding></app-data-binding> -->
+<!-- INPUT I OUTPUT -->
+<!-- <app-child [tasks]="maintasks" (etask)="selectedTasks($event)" (num2)="num2Printer($event)">
+  <h3>doddatkowe inforamjce wyświetlanie po dodaniu ng-content mozna tez wstawiac tu inne comonnet </h3>
+</app-child> -->
+<!-- potrzebne do applife cycle -->
+<div *ngIf="show">
+  <app-life-cycle [title]="title" [dog]="myDog"></app-life-cycle>
+</div>
+<button (click)="changeTitle()">zmień tytuł</button>
+<button (click)="changeDog()">zmień psa</button>
+<button (click)="nothing()">nic nie rob</button>
+<button (click)="destroy()">usuń componnent</button>
+<router-outlet></router-outlet>
