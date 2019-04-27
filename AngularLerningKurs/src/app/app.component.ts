@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { ChildComponent } from './child/child.component';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,12 @@ export class AppComponent {
   myDog = new Dog('reks', 2);
   show = true;
 
+  @ViewChild('childRef')
+  childComponent: ChildComponent;
+
+  @ViewChild('inputRef')
+  input: ElementRef;
+
   selectedTasks(taskFromChild: string): void {
     this.maintaksDone.push(taskFromChild);
     console.log(this.maintaksDone);
@@ -19,6 +26,7 @@ export class AppComponent {
   num2Printer(numToLog: number): void {
     console.log(numToLog, 'numt to log');
   }
+  ////////////////Cykkl zycia componetu
   changeTitle() {
     this.title = 'nowy tytuł';
   }
@@ -31,7 +39,14 @@ export class AppComponent {
   destroy() {
     this.show = !this.show;
   }
+  ///////////////////// Lokalne refernecje
+  AddtextRef(input: HTMLInputElement) {
+    this.title = input.value;
+    this.childComponent.tasks = [];
+    this.input.nativeElement.value = '';
+  }
 }
+
 
  export class Dog {
   // mozna tu napisac pola zaamisat w constructor
