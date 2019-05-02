@@ -14,10 +14,10 @@ export class AppComponent {
   show = true;
 
   @ViewChild('childRef')
-  childComponent: ChildComponent;
+  childComponent: ChildComponent; // ponieważ jest to component
 
   @ViewChild('inputRef')
-  input: ElementRef;
+  input: ElementRef; // element ref ponieważ jest to element html elmentRef do importowania
 
   selectedTasks(taskFromChild: string): void {
     this.maintaksDone.push(taskFromChild);
