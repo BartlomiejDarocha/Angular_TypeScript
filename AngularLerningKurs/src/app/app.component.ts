@@ -45,6 +45,7 @@ export class AppComponent {
     this.childComponent.tasks = [];
     this.input.nativeElement.value = '';
   }
+  //// klikacz
 }
 
 

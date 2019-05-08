@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ChildComponent } from './child/child.component';
 import { LifeCycleComponent } from './life-cycle/life-cycle.component';
+import { KlikaczComponent } from './klikacz/klikacz.component';
+import { Klikacz2Component } from './klikacz2/klikacz2.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { LifeCycleComponent } from './life-cycle/life-cycle.component';
     DataBindingComponent,
     ChildComponent,
     LifeCycleComponent,
+    KlikaczComponent,
+    Klikacz2Component,
   ],
   imports: [
     BrowserModule,
