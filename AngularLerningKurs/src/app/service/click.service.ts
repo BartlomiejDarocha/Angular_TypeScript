@@ -12,4 +12,7 @@ export class ClickService {
     this.sumClicks ++;
     console.log(this.sumClicks, ' suma klikniec');
   }
+  stringPrinting(toPrint: string) {
+    console.log(toPrint);
+  }
 }

@@ -11,6 +11,7 @@ import { ChildComponent } from './child/child.component';
 import { LifeCycleComponent } from './life-cycle/life-cycle.component';
 import { KlikaczComponent } from './klikacz/klikacz.component';
 import { Klikacz2Component } from './klikacz2/klikacz2.component';
+import { ClickService } from './service/click.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { Klikacz2Component } from './klikacz2/klikacz2.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ClickService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
