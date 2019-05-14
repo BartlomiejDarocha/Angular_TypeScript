@@ -1,23 +1,32 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { ChildComponent } from './child/child.component';
+import { ClickService } from './service/click.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'tytul 1';
   maintasks = ['mainTask', 'mycie', 'gotwanie', 'naprawa auta', 'nauka angulara'];
   maintaksDone = [];
   myDog = new Dog('reks', 2);
   show = true;
+  allClick;
 
   @ViewChild('childRef')
   childComponent: ChildComponent; // ponieważ jest to component
 
   @ViewChild('inputRef')
   input: ElementRef; // element ref ponieważ jest to element html elmentRef do importowania
+  constructor (private clickService: ClickService) {
+  }
+  ngOnInit(): void {
+    this.clickService.getsum().subscribe((data) => {
+      this.allClick = data;
+    });
+  }
 
   selectedTasks(taskFromChild: string): void {
     this.maintaksDone.push(taskFromChild);

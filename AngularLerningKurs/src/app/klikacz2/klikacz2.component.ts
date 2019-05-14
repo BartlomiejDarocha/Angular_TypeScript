@@ -22,5 +22,8 @@ export class Klikacz2Component implements OnInit {
   print() {
     this.clickService.stringPrinting('dupa');
   }
+  multiple() {
+    this.clickService.multipeTwoNum(2, 5);
+  }
 
 }

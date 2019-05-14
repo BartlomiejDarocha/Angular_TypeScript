@@ -12,6 +12,7 @@ import { LifeCycleComponent } from './life-cycle/life-cycle.component';
 import { KlikaczComponent } from './klikacz/klikacz.component';
 import { Klikacz2Component } from './klikacz2/klikacz2.component';
 import { ClickService } from './service/click.service';
+import { LogService} from './service/log.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { ClickService } from './service/click.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [ClickService],
+  providers: [ClickService, LogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
