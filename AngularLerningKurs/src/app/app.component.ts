@@ -32,9 +32,7 @@ export class AppComponent implements OnInit {
     this.maintaksDone.push(taskFromChild);
     console.log(this.maintaksDone);
   }
-  num2Printer(numToLog: number): void {
-    console.log(numToLog, 'numt to log');
-  }
+
   ////////////////Cykkl zycia componetu
   changeTitle() {
     this.title = 'nowy tytuł';

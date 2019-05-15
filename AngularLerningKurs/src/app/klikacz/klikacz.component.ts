@@ -20,7 +20,4 @@ export class KlikaczComponent implements OnInit {
   this.click++;
   this.clickService.addClick();
   }
-  print() {
-    this.clickService.stringPrinting('kupa');
-  }
 }

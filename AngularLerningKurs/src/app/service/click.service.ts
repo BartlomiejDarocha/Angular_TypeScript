@@ -14,10 +14,12 @@ export class ClickService {
   addClick() {
     this.sumClicks++;
     this.sum.next(this.sumClicks);
-    this.log.logger('kliknęcie');
   }
   getsum(): Observable<number> {
     return this.sum.asObservable();
+  }
+  getlog(num: number) {
+    this.log.logger(num);
   }
 
 
