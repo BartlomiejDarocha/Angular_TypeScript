@@ -1,6 +1,8 @@
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit} from '@angular/core';
 import { ChildComponent } from './child/child.component';
 import { ClickService } from './service/click.service';
+
+
 
 @Component({
   selector: 'app-root',
@@ -19,13 +21,21 @@ export class AppComponent implements OnInit {
   childComponent: ChildComponent; // ponieważ jest to component
 
   @ViewChild('inputRef')
-  input: ElementRef; // element ref ponieważ jest to element html elmentRef do importowania
+  input: HTMLInputElement; // element ref ponieważ jest to element html elmentRef do importowania
+  @ViewChild('box')
+  box: ElementRef;
+  @ViewChild('h1')
+  h1: HTMLElement;
   constructor (private clickService: ClickService) {
   }
   ngOnInit(): void {
     this.clickService.getsum().subscribe((data) => {
       this.allClick = data;
     });
+    this.input.setAttribute('value', 'dupa');
+    //console.log(this.box);
+    this.box.nativeElement.classList.add('active');
+    //console.log(this.h1.style);
   }
 
   selectedTasks(taskFromChild: string): void {
