@@ -32,12 +32,19 @@ export class AppComponent implements OnInit {
     this.clickService.getsum().subscribe((data) => {
       this.allClick = data;
     });
-    this.input.setAttribute('value', 'dupa');
-    //console.log(this.box);
+    console.log(this.box, ' box');
+    console.log(this.h1, ' h1');
     this.box.nativeElement.classList.add('active');
-    //console.log(this.h1.style);
-  }
+    // this.h1.onclick = (e) => {
+    //   this.testFunc();
+    // };
+    // this.h1.style.color = 'black';
 
+
+  }
+  testFunc() {
+    console.log('testss');
+  }
   selectedTasks(taskFromChild: string): void {
     this.maintaksDone.push(taskFromChild);
     console.log(this.maintaksDone);
@@ -60,7 +67,7 @@ export class AppComponent implements OnInit {
   AddtextRef(input: HTMLInputElement) {
     this.title = input.value;
     this.childComponent.tasks = [];
-    this.input.nativeElement.value = '';
+    this.input.value = '';
   }
   //// klikacz
 }

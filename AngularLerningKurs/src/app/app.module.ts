@@ -13,6 +13,7 @@ import { KlikaczComponent } from './klikacz/klikacz.component';
 import { Klikacz2Component } from './klikacz2/klikacz2.component';
 import { ClickService } from './service/click.service';
 import { LogService} from './service/log.service';
+import { HttpCompComponent } from './http-comp/http-comp.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { LogService} from './service/log.service';
     LifeCycleComponent,
     KlikaczComponent,
     Klikacz2Component,
+    HttpCompComponent,
   ],
   imports: [
     BrowserModule,
