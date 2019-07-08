@@ -15,6 +15,7 @@ import { ClickService } from './service/click.service';
 import { LogService} from './service/log.service';
 import { HttpCompComponent } from './http-comp/http-comp.component';
 import { RotatnionDivComponent } from './rotatnion-div/rotatnion-div.component';
+import { HttpClientComponent } from './http-client/http-client.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { RotatnionDivComponent } from './rotatnion-div/rotatnion-div.component';
     Klikacz2Component,
     HttpCompComponent,
     RotatnionDivComponent,
+    HttpClientComponent,
   ],
   imports: [
     BrowserModule,
