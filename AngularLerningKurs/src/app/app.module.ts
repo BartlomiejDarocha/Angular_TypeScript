@@ -15,7 +15,8 @@ import { ClickService } from './service/click.service';
 import { LogService} from './service/log.service';
 import { HttpCompComponent } from './http-comp/http-comp.component';
 import { RotatnionDivComponent } from './rotatnion-div/rotatnion-div.component';
-import { HttpClientComponent } from './http-client/http-client.component';
+import { HttpClientTestComponent } from './http-client-Test/http-client-Test.component';
+import { HttpService } from './http-client-Test/http.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { HttpClientComponent } from './http-client/http-client.component';
     Klikacz2Component,
     HttpCompComponent,
     RotatnionDivComponent,
-    HttpClientComponent,
+    HttpClientTestComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +37,7 @@ import { HttpClientComponent } from './http-client/http-client.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [ClickService, LogService],
+  providers: [ClickService, LogService, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

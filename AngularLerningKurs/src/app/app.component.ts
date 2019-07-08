@@ -29,12 +29,12 @@ export class AppComponent implements OnInit {
   constructor (private clickService: ClickService) {
   }
   ngOnInit(): void {
-    this.clickService.getsum().subscribe((data) => {
-      this.allClick = data;
-    });
+    // this.clickService.getsum().subscribe((data) => {
+    //   this.allClick = data;
+    // });
     console.log(this.box, ' box');
     console.log(this.h1, ' h1');
-    this.box.nativeElement.classList.add('active');
+    //this.box.nativeElement.classList.add('active');
     // this.h1.onclick = (e) => {
     //   this.testFunc();
     // };
@@ -79,3 +79,5 @@ export class AppComponent implements OnInit {
   }
 }
 
+
+//
