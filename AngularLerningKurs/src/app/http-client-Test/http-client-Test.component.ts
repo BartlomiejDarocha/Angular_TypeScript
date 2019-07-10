@@ -18,6 +18,16 @@ export class HttpClientTestComponent implements OnInit {
       console.log(posts, ' posts');
     });
   }
+  getPost() {
+    this.httpService.getPost(1).subscribe(post => {
+      console.log(post, 'post');
+    });
+  }
+  getPostByUser() {
+    this.httpService.getPostByUser(1).subscribe(posts => {
+      console.log(posts, ' postys z id 1');
+    });
+  }
 }
 export interface Post {
   userId?: number;

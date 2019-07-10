@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../http-client-Test/http-client-Test.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,13 +12,18 @@ export class HttpService {
 
   getPosts(): Observable<Array<Post>> {
     return this.http.get<Array<Post>>('https://jsonplaceholder.typicode.com/posts');
-
-  
   }
-
-  getPost(id: number) {}
-
-  getPostByUser(id: number) {}
+   // nie jeset koniecze dodawnaie Observable na koncu bo to blokuje zorbienie uniwersanlej metody 
+   //  http.get samo w soobie zwraca observable
+  getPost(id: number) {
+    return this.http.get('https://jsonplaceholder.typicode.com/posts/' + id);
+  }
+  //: Observable<Post>  <Post>
+  // pobieranie wszysktie posty usera podajac w parametrze jegp userID (wszystkie posty o Id 1)
+  getPostByUser(id: number): Observable<Array<Post>> {
+    const params = new HttpParams().set('userId', id + ''); // tak zeby number stał sie stringiemm dodaj do number pusty string
+    return this.http.get<Array<Post>>('https://jsonplaceholder.typicode.com/posts', {params: params});
+  }
 
   addPost(post: Post) {}
 
