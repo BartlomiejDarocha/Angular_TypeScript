@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from './http.service';
 
 @Component({
   selector: 'app-http-client-Test',
@@ -7,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HttpClientTestComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
     console.log('test');
+  }
+  getPosts() {
+    this.httpService.getPosts().subscribe(posts => {
+      console.log(posts, ' posts');
+    });
   }
 }
 export interface Post {
