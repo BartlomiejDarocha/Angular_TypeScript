@@ -11,7 +11,7 @@ export class HttpClientTestComponent implements OnInit {
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
-    console.log('test');
+    console.log('test HttpCilent component');
   }
   getPosts() {
     this.httpService.getPosts().subscribe(posts => {
@@ -26,6 +26,17 @@ export class HttpClientTestComponent implements OnInit {
   getPostByUser() {
     this.httpService.getPostByUser(1).subscribe(posts => {
       console.log(posts, ' postys z id 1');
+    });
+  }
+  addPost() {
+    const p: Post = ({
+    userId: 1,
+    id: null,
+    title: 'Mój post',
+    body: 'To jest post w angularze'
+    });
+    this.httpService.addPost(p).subscribe(post => {
+      console.log(post, ' to jest post wyslany z servera');
     });
   }
 }

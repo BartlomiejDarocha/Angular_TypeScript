@@ -24,8 +24,10 @@ export class HttpService {
     const params = new HttpParams().set('userId', id + ''); // tak zeby number stał sie stringiemm dodaj do number pusty string
     return this.http.get<Array<Post>>('https://jsonplaceholder.typicode.com/posts', {params: params});
   }
-
-  addPost(post: Post) {}
+  //dodwanie nowego postu
+  addPost(post: Post): Observable <Post> {
+    return this.http.post<Post>('https://jsonplaceholder.typicode.com/posts', post);
+  }
 
   deletePost(id: number) {}
   
