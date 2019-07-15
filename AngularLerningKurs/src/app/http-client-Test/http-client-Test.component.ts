@@ -50,6 +50,11 @@ export class HttpClientTestComponent implements OnInit {
       console.log(post, ' to jest Put post z servera');
     });
   }
+  deletePost() {
+    this.httpService.deletePost(1).subscribe(post => {
+      console.log(post, ' delete post');
+    })
+  }
 }
 export interface Post {
   userId?: number;
