@@ -53,7 +53,18 @@ export class HttpClientTestComponent implements OnInit {
   deletePost() {
     this.httpService.deletePost(1).subscribe(post => {
       console.log(post, ' delete post');
-    })
+    });
+  }
+  changePost() {
+    const p: Post = ({
+      userId: 1,
+      id: 1,
+      body: 'Zmieniam to metdoa Patch ale tylko to Body'
+    });
+    this.httpService.changePost(p).subscribe(post => {
+      console.log(post, ' post po Changre');
+    });
+
   }
 }
 export interface Post {

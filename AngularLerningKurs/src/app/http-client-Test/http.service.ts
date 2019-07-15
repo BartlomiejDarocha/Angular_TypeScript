@@ -35,8 +35,9 @@ export class HttpService {
   deletePost(id: number): Observable <Post> {
     return this.http.delete<Post>('https://jsonplaceholder.typicode.com/posts/' + id);
   }
-  
-  changePost(post: Post) {}
+  changePost(post: Post): Observable<Post> {
+    return this.http.patch<Post>('https://jsonplaceholder.typicode.com/posts/' + post.id, post);
+  }
 
 
 }
