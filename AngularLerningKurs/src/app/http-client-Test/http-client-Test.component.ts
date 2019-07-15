@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-http-client-Test',
@@ -16,6 +17,9 @@ export class HttpClientTestComponent implements OnInit {
   getPosts() {
     this.httpService.getPosts().subscribe(posts => {
       console.log(posts, ' posts');
+    },
+    (error: HttpErrorResponse) => {
+      console.log(error.status, ' error'); /// dzieki HttoErrorResponse mamy dostęp do np error status
     });
   }
   getPost() {
