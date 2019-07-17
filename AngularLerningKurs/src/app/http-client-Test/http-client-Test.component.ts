@@ -17,9 +17,22 @@ export class HttpClientTestComponent implements OnInit {
   getPosts() {
     this.httpService.getPosts().subscribe(posts => {
       console.log(posts, ' posts');
-    },
+    },// drugi argumanet subscireb pozwla wyswielic bledy tak jak tu jest to pokazane
     (error: HttpErrorResponse) => {
       console.log(error.status, ' error'); /// dzieki HttoErrorResponse mamy dostęp do np error status
+    });
+  }
+  // observable : response
+  getPosts2() {
+    this.httpService.getPost2().subscribe(posts => {
+      console.log(posts, ' post2');
+    });
+  }
+  // repsone type: text
+  // wywywla po porstu text zamiast jSona tez calkiem spoko sprawa jak chce sie zobaczyc dokladnaia strukture db
+  getPosts3() {
+    this.httpService.getPost3().subscribe(posts => {
+      console.log(posts, ' post3');
     });
   }
   getPost() {
