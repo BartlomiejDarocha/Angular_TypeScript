@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-http-client-Test',
@@ -9,10 +10,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class HttpClientTestComponent implements OnInit {
 
+  allPosts$: Observable<Array<Post>>;
+
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
     console.log('test HttpCilent component' );
+  }
+  getPosts0() {
+     this.allPosts$ = this.httpService.getPosts();
   }
   getPosts() {
     this.httpService.getPosts().subscribe(posts => {

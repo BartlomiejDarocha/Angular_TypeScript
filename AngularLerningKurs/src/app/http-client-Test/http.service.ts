@@ -13,12 +13,12 @@ export class HttpService {
 
   // to jest metoda z 3 razy proba pobrania z danych z servera na rxjs Oprators
   getPosts(): Observable<Array<Post>> {
-    return this.http.get<Array<Post>>('https://jsonplaceholder.typicode.com/postxyx').pipe(
-      tap(() => console.log('https://jsonplaceholder.typicode.com/postxyx  test tap url')), retry(3) // powtórka 3 razy
-      // catchError(err => {
-      //   console.log(err, 'dupa');
-      //   return of(null);
-      // })
+    return this.http.get<Array<Post>>('https://jsonplaceholder.typicode.com/posts').pipe(// dodac do link xyx zeby zadzialoa retry
+      tap(), retry(3), // powtórka 3 razy wstawic w tap(() => console.log('https://jsonplaceholder.typicode.com/postxyx  test tap url')) 
+      catchError(err => {
+        console.log(err, ' <---error');
+        return of(null);
+      })
       // ten zakomentowa kod służy do przechywytwania błędów, ale wyżej http-clietn-TEST jest juz podobna metoda
       // ta wydaje się być lepsza
     );
@@ -42,7 +42,9 @@ export class HttpService {
   // pobieranie wszysktie posty usera podajac w parametrze jegp userID (wszystkie posty o Id 1)
   getPostByUser(id: number): Observable<Array<Post>> {
     const params = new HttpParams().set('userId', id + ''); // tak zeby number stał sie stringiemm dodaj do number pusty string
-    return this.http.get<Array<Post>>('https://jsonplaceholder.typicode.com/posts', {params: params});
+    const tempid = id.toString();
+    const params2 = {'userId': tempid } ;// tak tez działa nie trzeba robic specialnego obiektu HttpParams
+    return this.http.get<Array<Post>>('https://jsonplaceholder.typicode.com/posts', {params: params2});
   }
   //dodwanie nowego postu
   addPost(post: Post): Observable <Post> {
