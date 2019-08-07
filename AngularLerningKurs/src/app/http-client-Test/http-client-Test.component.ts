@@ -18,7 +18,7 @@ export class HttpClientTestComponent implements OnInit {
     console.log('test HttpCilent component' );
   }
   getPosts0() {
-     this.allPosts$ = this.httpService.getPosts();
+     this.allPosts$ = this.httpService.posts$;
   }
   getPosts() {
     this.httpService.getPosts().subscribe(posts => {

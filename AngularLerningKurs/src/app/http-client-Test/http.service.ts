@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../http-client-Test/http-client-Test.component';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { catchError, retry, tap} from 'rxjs/operators';
 
 @Injectable({
@@ -9,7 +9,19 @@ import { catchError, retry, tap} from 'rxjs/operators';
 })
 export class HttpService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.getPosts0();
+   }
+  private postsObs = new BehaviorSubject<Array<Post>>([]);
+  posts$ = this.postsObs.asObservable();
+  getPosts0() {
+    return this.http.get<Array<Post>>('https://jsonplaceholder.typicode.com/posts').subscribe(posts => {
+      this.postsObs.next(posts);
+    },
+    err => {
+      console.log(err);
+    });
+  }
 
   // to jest metoda z 3 razy proba pobrania z danych z servera na rxjs Oprators
   getPosts(): Observable<Array<Post>> {
@@ -28,13 +40,13 @@ export class HttpService {
     // jako drugi argument to jest obiekt w którym ustawiam opcje ponziej ustawnie opcji na params.
     // mozna przestawić observale na reposne i zamiast Jsona dostane obiekt typu reponse
     // RESPONSE JEST TO PEŁNY OBIEKT ODPOWIEDZI Z SERVERA
-    return this.http.get<Response>('https://jsonplaceholder.typicode.com/posts', 
+    return this.http.get<Response>('https://jsonplaceholder.typicode.com/posts',
     { observe: 'response'});
   }
   getPost3(): Observable<any> {
     return this.http.get('https://jsonplaceholder.typicode.com/posts', {responseType: 'text'});
   }
-   // nie jeset koniecze dodawnaie Observable na koncu bo to blokuje zorbienie uniwersanlej metody 
+   // nie jeset koniecze dodawnaie Observable na koncu bo to blokuje zorbienie uniwersanlej metody
    //  http.get samo w soobie zwraca observable
   getPost(id: number) {
     return this.http.get('https://jsonplaceholder.typicode.com/posts/' + id);
