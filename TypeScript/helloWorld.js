@@ -31,18 +31,45 @@ exempale.showMsg();
 console.log(exempale.hello());
 console.log(exempale.hellow2('dupa'));
 /////////INTERFACES!!!!!/////
-var InterfacesTest = /** @class */ (function () {
-    function InterfacesTest(msg) {
+var FucTest = /** @class */ (function () {
+    function FucTest(msg) {
         this.msg = 'xxx';
         this.msg = msg;
     }
-    InterfacesTest.prototype.print = function () {
+    FucTest.prototype.print = function () {
         console.log(this.msg);
     };
-    return InterfacesTest;
+    return FucTest;
 }());
-var interFace1 = new InterfacesTest('bartek');
-interFace1.print();
+var funcConstruto = /** @class */ (function () {
+    function funcConstruto(name, size, dateTask, pry) {
+        if (dateTask === void 0) { dateTask = null; }
+        this.name = name;
+        this.size = size;
+        this.dateTask = dateTask;
+        this.pry = pry;
+    }
+    funcConstruto.prototype.insideInfo = function () {
+        console.log("Zadanie: " + this.name);
+        console.log("ilo\u015B\u0107 cykli " + this.size);
+        console.log("pryrioryted  " + this.pry);
+    };
+    funcConstruto.prototype.endLine = function () {
+        console.log("=====================");
+    };
+    funcConstruto.prototype.printInfo = function () {
+        if (!this.dateTask) {
+            this.insideInfo();
+            this.endLine();
+        }
+        else {
+            this.insideInfo();
+            console.log("czas do zakoczenia zadania " + this.dateTask);
+            this.endLine();
+        }
+    };
+    return funcConstruto;
+}());
 var dog1 = ({
     name: 'Reksio',
     age: 2,
@@ -66,12 +93,20 @@ var Urname = /** @class */ (function () {
     }
     return Urname;
 }());
-var myName = new Urname("tomke");
+var myName = new Urname("Tomek");
 myName.funcPrint();
-
-var testfuc = function() {
-    console.log('test Wroks');
-}
-module.exports.someFunction = function () {
-    console.log('hi');
-  };
+var zadanie1 = ({
+    name: 'kodzenie po pijaku',
+    size: 3,
+    date: new Date(),
+    priorytet: 1
+});
+var zadanie2 = ({
+    name: 'kodznie po pijaku dwa',
+    size: 2,
+    priorytet: 2
+});
+var myPrinter1 = new funcConstruto(zadanie1.name, zadanie1.size, zadanie1.date, zadanie1.priorytet);
+myPrinter1.printInfo();
+var myPrinter2 = new funcConstruto(zadanie2.name, zadanie2.size, null, zadanie2.priorytet);
+myPrinter2.printInfo();
