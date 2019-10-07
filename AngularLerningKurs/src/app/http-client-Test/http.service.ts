@@ -10,10 +10,10 @@ import { catchError, retry, tap} from 'rxjs/operators';
 export class HttpService {
 
   constructor(private http: HttpClient) {
-    this.getPosts0();
+    //this.getPosts0();
    }
   private postsObs = new BehaviorSubject<Array<Post>>([]);
-  posts$ = this.postsObs.asObservable();
+  public posts$ = this.postsObs.asObservable();
   getPosts0() {
     return this.http.get<Array<Post>>('https://jsonplaceholder.typicode.com/posts').subscribe(posts => {
       this.postsObs.next(posts);
@@ -25,7 +25,7 @@ export class HttpService {
 
   // to jest metoda z 3 razy proba pobrania z danych z servera na rxjs Oprators
   getPosts(): Observable<Array<Post>> {
-    return this.http.get<Array<Post>>('https://jsonplaceholder.typicode.com/posts').pipe(// dodac do link xyx zeby zadzialoa retry
+    return this.http.get<Array<Post>>('https://jsonplaceholder.typicode.com/postsxyz').pipe(// dodac do link xyx zeby zadzialoa retry
       tap(), retry(3), // powtórka 3 razy wstawic w tap(() => console.log('https://jsonplaceholder.typicode.com/postxyx  test tap url')) 
       catchError(err => {
         console.log(err, ' <---error');
@@ -52,11 +52,13 @@ export class HttpService {
     return this.http.get('https://jsonplaceholder.typicode.com/posts/' + id);
   }
   // pobieranie wszysktie posty usera podajac w parametrze jegp userID (wszystkie posty o Id 1)
-  getPostByUser(id: number): Observable<Array<Post>> {
+  getPostByUser(id: number, params3?: any): Observable<Array<Post>> {
     const params = new HttpParams().set('userId', id + ''); // tak zeby number stał sie stringiemm dodaj do number pusty string
     const tempid = id.toString();
-    const params2 = {'userId': tempid } ;// tak tez działa nie trzeba robic specialnego obiektu HttpParams
-    return this.http.get<Array<Post>>('https://jsonplaceholder.typicode.com/posts', {params: params2});
+    const params2 = {'userId': tempid } ;// tak tez działa nie trzeba robic specialnego obiektu HttpParam
+    const par3 = params3;
+    return this.http.get<Array<Post>>('https://jsonplaceholder.typicode.com/posts', {params: par3});
+    //return this.http.get<Array<Post>>('https://jsonplaceholder.typicode.com/posts', {params: params2});
   }
   //dodwanie nowego postu
   addPost(post: Post): Observable <Post> {

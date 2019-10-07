@@ -12,13 +12,23 @@ export class HttpClientTestComponent implements OnInit {
 
   allPosts$: Observable<Array<Post>>;
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService) {
+    this.allPosts$ = this.httpService.posts$;
+   }
 
   ngOnInit() {
     console.log('test HttpCilent component' );
   }
-  getPosts0() {
-     this.allPosts$ = this.httpService.posts$;
+  getPosts0() { // wyswietanie danych odrazu jako observable całkiem fajna rzecz by szybko wysietlic dane i mieć je 
+    // metody w swrwieice czyli te posty jakos allPost$ jakos observable i dodaje is $ jakos dekotarto a w serwisie
+    // wiec serwis wysyla rzadaie i zwraca odrazu observable. Najpier jest stworzny w sewsie zmiana która jest jako 
+    // behawior subjest oraz zmina posts$ jako asObsevale potem akurat w tym przypadku w constuctorze jest odpalana metoda
+    // wyslajaca rzadnie do severa (ale nie musi być moze byc tu odpalana na evnecie), i to co dostanie wrzuca w zmiena posts$ 
+    // przez metode next, a tu posts$ jest przypisuwane do zmiennje mozna to przypisać on init np
+    // CO WAZNE pamietać zeby to wyświetlic w htmlu należy użyc async pipie w petli czy czym kolwiek innym
+
+     //this.allPosts$ = this.httpService.posts$;
+     this.httpService.getPosts0();
   }
   getPosts() {
     this.httpService.getPosts().subscribe(posts => {
@@ -47,7 +57,7 @@ export class HttpClientTestComponent implements OnInit {
     });
   }
   getPostByUser() {
-    this.httpService.getPostByUser(1).subscribe(posts => {
+    this.httpService.getPostByUser(1, {'userId': '1' }).subscribe(posts => {
       console.log(posts, ' postys z UserId = 1'); // z paramss
     });
   }
