@@ -17,6 +17,10 @@ import { HttpCompComponent } from './http-comp/http-comp.component';
 import { RotatnionDivComponent } from './rotatnion-div/rotatnion-div.component';
 import { HttpClientTestComponent } from './http-client-Test/http-client-Test.component';
 import { HttpService } from './http-client-Test/http.service';
+import { MaterialComponent } from './material/material.component';
+import { StandardDialogComponent } from './standard-dialog/standard-dialog.component';
+import {MatDialogModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,12 +34,16 @@ import { HttpService } from './http-client-Test/http.service';
     HttpCompComponent,
     RotatnionDivComponent,
     HttpClientTestComponent,
+    MaterialComponent,
+    StandardDialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
   ],
   providers: [ClickService, LogService, HttpService],
   bootstrap: [AppComponent]
