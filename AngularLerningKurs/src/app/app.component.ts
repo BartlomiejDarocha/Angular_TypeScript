@@ -1,6 +1,9 @@
 import { Component, ViewChild, ElementRef, OnInit} from '@angular/core';
 import { ChildComponent } from './child/child.component';
 import { ClickService } from './service/click.service';
+import {MatDialog} from '@angular/material/dialog';
+import {DialogComponent} from './dialog/dialog.component';
+
 
 
 
@@ -26,8 +29,10 @@ export class AppComponent implements OnInit {
   box: ElementRef;
   @ViewChild('h1')
   h1: HTMLElement;
-  constructor (private clickService: ClickService) {
-  }
+  constructor (
+    private clickService: ClickService,
+    public dialog: MatDialog,
+    ) {}
   ngOnInit(): void {
     // this.clickService.getsum().subscribe((data) => {
     //   this.allClick = data;
@@ -39,8 +44,14 @@ export class AppComponent implements OnInit {
     //   this.testFunc();
     // };
     // this.h1.style.color = 'black';
-
-
+  }
+  openDialog() {
+    console.log('opendialog');
+    this.dialog.open(DialogComponent, {
+      data: {
+        text: 'dowlony Tekst'
+      }
+    });
   }
   testFunc() {
     console.log('testss');

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ChildComponent } from './child/child.component';
 import { LifeCycleComponent } from './life-cycle/life-cycle.component';
@@ -17,10 +17,16 @@ import { HttpCompComponent } from './http-comp/http-comp.component';
 import { RotatnionDivComponent } from './rotatnion-div/rotatnion-div.component';
 import { HttpClientTestComponent } from './http-client-Test/http-client-Test.component';
 import { HttpService } from './http-client-Test/http.service';
-import { MaterialComponent } from './material/material.component';
-import { StandardDialogComponent } from './standard-dialog/standard-dialog.component';
-import {MatDialogModule} from '@angular/material';
+//imporotwanie by wyswietlic anuglorowe modale itp
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatNativeDateModule} from '@angular/material/core';
+import { DialogComponent } from './dialog/dialog.component';
+
+import {MaterialModule} from './material-module';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -34,17 +40,20 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HttpCompComponent,
     RotatnionDivComponent,
     HttpClientTestComponent,
-    MaterialComponent,
-    StandardDialogComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    MatDialogModule,
     BrowserAnimationsModule,
+    MatNativeDateModule,
+    MaterialModule
+
   ],
+  entryComponents: [DialogComponent],
   providers: [ClickService, LogService, HttpService],
   bootstrap: [AppComponent]
 })
