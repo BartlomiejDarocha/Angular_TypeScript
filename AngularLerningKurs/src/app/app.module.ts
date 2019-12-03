@@ -23,6 +23,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { DialogComponent } from './dialog/dialog.component';
 
 import {MaterialModule} from './material-module';
+import { TestStyleComponent } from './test-style/test-style.component';
 
 
 
@@ -41,6 +42,7 @@ import {MaterialModule} from './material-module';
     RotatnionDivComponent,
     HttpClientTestComponent,
     DialogComponent,
+    TestStyleComponent,
   ],
   imports: [
     BrowserModule,
