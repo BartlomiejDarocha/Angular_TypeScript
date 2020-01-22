@@ -28,22 +28,24 @@ export class AppComponent implements OnInit {
   @ViewChild('box')
   box: ElementRef;
   @ViewChild('h1')
-  h1: HTMLElement;
+  h1: ElementRef;
   constructor (
     private clickService: ClickService,
     public dialog: MatDialog,
     ) {}
   ngOnInit(): void {
-    // this.clickService.getsum().subscribe((data) => {
-    //   this.allClick = data;
-    // });
+    this.clickService.getsum().subscribe((data) => {
+      this.allClick = data;
+    });
     console.log(this.box, ' box');
     console.log(this.h1, ' h1');
-    //this.box.nativeElement.classList.add('active');
-    // this.h1.onclick = (e) => {
-    //   this.testFunc();
-    // };
-    // this.h1.style.color = 'black';
+    this.box.nativeElement.classList.add('active');
+    this.box.nativeElement.style.color = 'green';
+    this.h1.nativeElement.style.color = 'red';
+  }
+  changeColor() {
+    this.box.nativeElement.style.color = 'blue';
+    this.h1.nativeElement.style.color = 'orange';
   }
   openDialog() {
     console.log('opendialog');
@@ -52,9 +54,6 @@ export class AppComponent implements OnInit {
         text: 'dowlony Tekst'
       }
     });
-  }
-  testFunc() {
-    console.log('testss');
   }
   selectedTasks(taskFromChild: string): void {
     this.maintaksDone.push(taskFromChild);
